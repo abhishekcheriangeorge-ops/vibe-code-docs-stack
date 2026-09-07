@@ -25,3 +25,5 @@ This repository contains guidance and templates. A change to a document should n
 Keep skills/vibe-code-docs-stack self-contained and its entrypoint concise. Add mode-specific guidance in references only where it changes the agent's decisions. Use portable frontmatter in SKILL.md; optional Codex UI metadata belongs in agents/openai.yaml.
 
 Edit canonical templates under starter-kit, then run `python3 scripts/build_skill_assets.py` and `python3 scripts/build_skill_assets.py --check`. Commit the resulting assets with their sources. Check links within a detached copy of the skill. For meaningful behavioral changes, exercise a representative task in an isolated fixture and report what it demonstrated without claiming live testing in other harnesses.
+
+The root LICENSE is the canonical MIT notice. The same helper bundles and checks its standalone skill copy; regenerate that copy if the root notice changes.

@@ -2,7 +2,7 @@
 
 For the current task, you can simply give your coding agent the repo link and ask it to follow the skill. Use the [copy-and-paste quickstart](README.md#quick-start-give-this-to-your-coding-agent). Installation is optional and makes the skill discoverable for future tasks in a supported harness.
 
-The self-contained skill is [skills/vibe-code-docs-stack](skills/vibe-code-docs-stack/SKILL.md). Copy the **whole directory**, including references, assets, and optional UI metadata. The agent needs file access to the target project; the skill itself has no runtime dependency, account connection, or executable hook.
+The self-contained skill is [skills/vibe-code-docs-stack](skills/vibe-code-docs-stack/SKILL.md). Copy the **whole directory**, including references, assets, the bundled [MIT license](skills/vibe-code-docs-stack/LICENSE), and optional UI metadata. The agent needs file access to the target project; the skill itself has no runtime dependency, account connection, or executable hook.
 
 ## Codex: ask the built-in installer
 
@@ -89,13 +89,13 @@ Pull the upstream toolkit changes, inspect the skill diff, and replace the insta
 
 ## Maintainer packaging
 
-The root starter-kit directory is the canonical template source. The skill's assets/templates directory is generated from it for standalone distribution. After editing a template, run from the toolkit root:
+The root starter-kit directory is the canonical template source. The skill's assets/templates directory is generated from it for standalone distribution. The root LICENSE is canonical and is also bundled into the skill directory. After editing a template or the license, run from the toolkit root:
 
 ```sh
 python3 scripts/build_skill_assets.py
 python3 scripts/build_skill_assets.py --check
 ```
 
-Commit both the template change and its generated assets. Edit workflow behavior in SKILL.md and its focused references. The maintainer helper uses Python's standard library; installed agents do not need to execute it.
+Commit source changes and their generated copies. Check mode verifies both templates and the bundled license. Edit workflow behavior in SKILL.md and its focused references. The maintainer helper uses Python's standard library; installed agents do not need to execute it.
 
 Research checked: 7 September 2026. Package and behavioral validation are recorded in [SKILL-VALIDATION.md](SKILL-VALIDATION.md); verify discovery in the particular harness/version you use.

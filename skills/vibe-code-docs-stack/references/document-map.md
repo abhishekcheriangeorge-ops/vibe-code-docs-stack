@@ -2,6 +2,8 @@
 
 Keep equivalent existing paths. In a new stack, use these destinations. Each template is a shape to adapt; inspect it only when producing that document. Core documents may be a few paragraphs. Add conditional documents when their responsibility applies, not merely because the asset exists.
 
+When copying or adapting substantial portions of the bundled templates, retain the [MIT notice](../LICENSE) in the target's third-party notices or a file such as `LICENSES/vibe-code-docs-stack.txt`. Preserve the target application's existing license.
+
 | Canonical destination | Responsibility and trigger | Bundled template |
 |---|---|---|
 | README.md | Core: purpose, owner, entry points, audience reading paths | [README](../assets/templates/README.md) |

@@ -122,3 +122,7 @@ The file layout and lifecycle recommendations are a practical synthesis. The tem
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). Improvements should make documentation easier to use, verify, and maintain without creating duplicate sources of truth.
+
+## License
+
+The original code, skill, prompts, documentation, and templates in this repository are licensed under [MIT](LICENSE). You can use and adapt them in private or commercial projects. Keep the copyright and permission notice with copies or substantial portions of the toolkit; using it does not require licensing your own application under MIT. The standalone skill includes its own copy of the license. Linked third-party material remains subject to its own terms.

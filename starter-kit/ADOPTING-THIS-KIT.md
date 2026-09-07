@@ -4,6 +4,8 @@ These files are adaptable templates, not documentation of an audited application
 
 Read the [documentation playbook](../documentation-playbook.md) and [START-PROJECT prompt](../START-PROJECT.md). Copy only the files appropriate to your project's stage and merge with existing docs and agent instructions. Replace bracketed placeholders with verified facts, explicit unknowns, or a justified “not applicable.” Delete template guidance after adaptation.
 
+When copying or adapting substantial portions of these templates, retain the toolkit's [MIT notice](../LICENSE) in your project's third-party notices or a file such as `LICENSES/vibe-code-docs-stack.txt`. Preserve your application's existing license; adopting the toolkit does not require changing it to MIT.
+
 Begin with README, NOW, AGENTS, PRODUCT, ARCHITECTURE, and RISKS. Add ENGINEERING when runnable, DATA when persistent, OPERATIONS when hosted, and USER-GUIDE before others use the product. This kit includes later-stage files so you have their templates ready; their presence does not make your project ready for handover.
 
 The decision, runbook, and handover files under templates/ are sources for documents you create when needed. The portfolio template belongs once in your private project index, rather than in every application repo.

@@ -1,8 +1,9 @@
 ---
 name: vibe-code-docs-stack
 description: Create, retrofit, or maintain repository documentation that preserves product intent, design decisions, known risks, current work state, and engineer/operator handovers. Use for documentation-stack setup, documentation updates after code changes, project checkpoints, and handover preparation. For ordinary coding tasks, use only when documentation work is requested or required by the project's existing instructions.
+license: MIT
 metadata:
-  version: "0.1.0"
+  version: "0.1.1"
 ---
 
 # Vibe Code Docs Stack
