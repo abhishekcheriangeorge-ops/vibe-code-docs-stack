@@ -6,10 +6,31 @@ A practical documentation system for people building software with AI coding too
 
 Built for solo builders, frequent project switchers, and teams taking prototypes into long-term ownership. Start small and add documentation as the project earns it.
 
+## Quick start: give this to your coding agent
+
+Open the application project you want to document in your coding agent, then paste:
+
+```text
+Use the Vibe Code Docs Stack skill from:
+https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack
+
+Read skills/vibe-code-docs-stack/SKILL.md and its relevant supporting
+references and templates. Follow the workflow to create or improve
+the documentation for my application project currently open here.
+Preserve useful existing docs, record known problems and missing
+context, and keep the documentation in my application repository.
+Use the Vibe Code Docs Stack repository as reference material.
+```
+
+Your agent needs access to this GitHub repository and the application project. If it cannot fetch GitHub files, download the toolkit and provide the complete `skills/vibe-code-docs-stack` folder, including its references and assets.
+
+**You can use the skill for the current task without permanently installing it.** To make it discoverable in future sessions, follow the optional [installation guide](INSTALL-SKILL.md).
+
 ## Start here
 
 | Your situation | What to use |
 |---|---|
+| I want to give my agent the repo link and use it now | [Copy the quick-start prompt](#quick-start-give-this-to-your-coding-agent) |
 | I want to install this as an agent skill | [Skill installation and usage](INSTALL-SKILL.md) |
 | I already have a project | [Retrofit an existing project](prompts/RETROFIT-PROJECT.md) |
 | I'm starting a new project | [Set up the documentation stack](START-PROJECT.md) |
@@ -17,9 +38,9 @@ Built for solo builders, frequent project switchers, and teams taking prototypes
 | I want the actual document templates | [Starter kit](starter-kit/ADOPTING-THIS-KIT.md) |
 | I'm transferring responsibility | [Handover evidence template](starter-kit/templates/HANDOVER.md) |
 
-## Use it as an agent skill
+## Install for future use (optional)
 
-Install the self-contained [Vibe Code Docs Stack skill](skills/vibe-code-docs-stack/SKILL.md) once in your harness or commit it into a target project's skill directory. Then select it and ask it to bootstrap, retrofit, maintain, checkpoint, or prepare a handover.
+To make the self-contained [Vibe Code Docs Stack skill](skills/vibe-code-docs-stack/SKILL.md) discoverable in future tasks, install it in your harness or commit it into a target project's supported skill directory. Then select it and ask it to bootstrap, retrofit, maintain, checkpoint, or prepare a handover.
 
 ```text
 Use vibe-code-docs-stack to retrofit this project's documentation.

@@ -1,5 +1,7 @@
 # Install Vibe Code Docs Stack as an agent skill
 
+For the current task, you can simply give your coding agent the repo link and ask it to follow the skill. Use the [copy-and-paste quickstart](README.md#quick-start-give-this-to-your-coding-agent). Installation is optional and makes the skill discoverable for future tasks in a supported harness.
+
 The self-contained skill is [skills/vibe-code-docs-stack](skills/vibe-code-docs-stack/SKILL.md). Copy the **whole directory**, including references, assets, and optional UI metadata. The agent needs file access to the target project; the skill itself has no runtime dependency, account connection, or executable hook.
 
 ## Codex: ask the built-in installer
