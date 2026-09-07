@@ -8,7 +8,7 @@ Owner: [role]. Audience: [operator/engineer]. Last exercised: [date, environment
 
 ## Before starting
 
-[Required role/access, exact target environment, prerequisites, relevant diagnostic evidence, potential side effects, and any authorization required for this specific action.]
+[Required role/access, exact target identifiers verified against command/configuration, prerequisites, diagnostic evidence, potential side effects, and authorization for this specific action. Preserve existing authorization; obtain only what is missing. For an exercise, name the isolated destination and disabled/test integrations. A restore may overwrite its destination: never use production as an exercise target.]
 
 ## Procedure
 
@@ -26,4 +26,4 @@ Owner: [role]. Audience: [operator/engineer]. Last exercised: [date, environment
 
 ## Afterward
 
-[Incident/issue record where appropriate, temporary changes to reverse, follow-up owner, and documentation corrections discovered during execution.]
+[Incident/issue record where appropriate, temporary changes and disposable resources to clean up, follow-up owner, and documentation corrections discovered during execution. Keep sensitive incident evidence in an approved, access-controlled location; use a safe summary in public documentation.]

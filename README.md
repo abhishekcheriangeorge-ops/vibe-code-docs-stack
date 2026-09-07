@@ -6,6 +6,8 @@ A practical documentation system for people building software with AI coding too
 
 Built for solo builders, frequent project switchers, and teams taking prototypes into long-term ownership. Start small and add documentation as the project earns it.
 
+Release: **v0.2.0** · Maintainer: [Abhishek Cherian George](https://github.com/abhishekcheriangeorge-ops). See [changes](CHANGELOG.md) and [validation scope](SKILL-VALIDATION.md).
+
 ## Quick start: give this to your coding agent
 
 Open the application project you want to document in your coding agent, then paste:
@@ -13,6 +15,7 @@ Open the application project you want to document in your coding agent, then pas
 ```text
 Use the Vibe Code Docs Stack skill from:
 https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack
+Use release v0.2.0 and read supporting files from that same revision.
 
 Read skills/vibe-code-docs-stack/SKILL.md and its relevant supporting
 references and templates. Follow the workflow to create or improve
@@ -20,9 +23,14 @@ the documentation for my application project currently open here.
 Preserve useful existing docs, record known problems and missing
 context, and keep the documentation in my application repository.
 Use the Vibe Code Docs Stack repository as reference material.
+If web retrieval is incomplete, clone or download that release into
+a temporary/tools directory outside my application project. Exclude
+toolkit and installed-skill files from the application's doc inventory.
+If you cannot read SKILL.md and the needed supporting files, report
+the missing access instead of claiming to have followed the skill.
 ```
 
-Your agent needs access to this GitHub repository and the application project. If it cannot fetch GitHub files, download the toolkit and provide the complete `skills/vibe-code-docs-stack` folder, including its references and assets.
+Your agent needs access to this GitHub repository and the application project. If it cannot fetch GitHub files, download the toolkit outside the application project and provide the complete `skills/vibe-code-docs-stack` folder, including its references, assets, and license. Tell the agent where you placed it. [Manual installation](INSTALL-SKILL.md#manual-installation-across-harnesses) is another option.
 
 **You can use the skill for the current task without permanently installing it.** To make it discoverable in future sessions, follow the optional [installation guide](INSTALL-SKILL.md).
 
@@ -34,9 +42,13 @@ Your agent needs access to this GitHub repository and the application project. I
 | I want to install this as an agent skill | [Skill installation and usage](INSTALL-SKILL.md) |
 | I already have a project | [Retrofit an existing project](prompts/RETROFIT-PROJECT.md) |
 | I'm starting a new project | [Set up the documentation stack](START-PROJECT.md) |
+| I'm returning or switching coding tools | [Resume prompt](START-PROJECT.md#resume-or-switch-tools-with-this) |
+| I'm finishing a session | [Checkpoint prompt](START-PROJECT.md#end-a-work-session-with-this) |
+| I'm finishing a planning conversation | [Extract the project brief](START-PROJECT.md#end-a-planning-conversation-with-this) |
 | I want the reasoning and full workflow | [Research and playbook](documentation-playbook.md) |
 | I want the actual document templates | [Starter kit](starter-kit/ADOPTING-THIS-KIT.md) |
-| I'm transferring responsibility | [Handover evidence template](starter-kit/templates/HANDOVER.md) |
+| I'm transferring responsibility | [Handover workflow](skills/vibe-code-docs-stack/references/handover.md) and [record template](starter-kit/templates/HANDOVER.md) |
+| I'm changing this toolkit as a coding agent | [Maintainer instructions](AGENTS.md) |
 
 ## Install for future use (optional)
 
@@ -52,7 +64,7 @@ The skill bundles its references and templates, with optional Codex UI metadata 
 ## Use it on an existing project
 
 1. Open the target project in your coding agent with repository access.
-2. Paste the [retrofit prompt](prompts/RETROFIT-PROJECT.md).
+2. Copy the main text block from the [retrofit prompt](prompts/RETROFIT-PROJECT.md).
 3. Provide relevant proposals, planning notes, or conversation extracts. Ask the agent to distinguish historical intent from current implementation.
 4. Review the questions about purpose and design reasoning that only you can answer.
 5. Review and commit the resulting documentation alongside the code.
@@ -62,7 +74,7 @@ The prompt is sufficient to begin. Use the starter-kit files when you want the e
 
 ## Use it on a new project
 
-Paste the main prompt from [START-PROJECT.md](START-PROJECT.md) into your coding agent alongside the project brief. Have it fill a short initial stack from accepted decisions, then maintain affected documents as implementation progresses.
+Copy the setup text block from [START-PROJECT.md](START-PROJECT.md) into your coding agent alongside the project brief. Have it fill a short initial stack from accepted decisions, then maintain affected documents as implementation progresses. The other text blocks are separate prompts for later situations.
 
 When turning a long planning conversation into a brief, separate **accepted decisions**, **proposals**, **assumptions**, and **unresolved questions**. The setup file also includes prompts for ending a planning conversation, resuming work, and making a checkpoint.
 
@@ -109,7 +121,7 @@ Instructions guide the agent; checks and practical handover exercises establish 
 
 ## Moving between coding tools
 
-The kit uses a shared AGENTS.md contract and a small [CLAUDE.md adapter](starter-kit/CLAUDE.md) that imports it. Verify the receiving tool loads the intended instructions, and transfer the relevant code and documents together. Required context should not live only in a local chat or an agent's private memory.
+The kit uses a shared AGENTS.md contract and a small [CLAUDE.md adapter](starter-kit/CLAUDE.md) that imports it. In a fresh receiving session, check the tool's loaded-instructions view when available and ask it to name the applicable files, key constraints, and documentation obligations. If you cannot access that session, record the check as pending. Transfer relevant code and documents together; required context should not live only in local chat or agent memory.
 
 Tool-specific behavior and references are documented in the [playbook](documentation-playbook.md). Recheck provider guidance when adopting the kit, as tools and hosted services change.
 

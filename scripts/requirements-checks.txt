@@ -1,0 +1,4 @@
+# Maintainer checks only; the installed skill has no runtime dependencies.
+markdown-it-py==4.2.0
+mdurl==0.1.2
+PyYAML==6.0.3

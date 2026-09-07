@@ -1,6 +1,6 @@
 # Vibe Code Docs Stack — Research and Playbook
 
-Research checked: 7 September 2026. Designed for builders using AI coding tools, GitHub, Vercel, and Supabase or Neon, with eventual engineer and operator handover.
+Designed for builders using AI coding tools, with eventual engineer and operator handover. The provider examples cover GitHub, Vercel, and Supabase or Neon; the documentation questions also apply to other stacks. Provider claims and their verification scope are maintained in the [optional provider reference](skills/vibe-code-docs-stack/references/providers.md).
 
 ## Recommendation
 
@@ -37,7 +37,7 @@ flowchart TD
 
 **Google SRE's operational guidance** connects alerts, structured playbooks, handoffs, practice, and updating instructions as production changes. Adapt this to a small team with a few tested procedures and clear ownership. [Google SRE workbook](https://sre.google/workbook/on-call/)
 
-The filenames, size targets, lifecycle stages, and review cadence below are my recommendations for your workflow, not requirements imposed by those frameworks.
+The filenames, size guidance, lifecycle stages, and review cadence below are the kit's recommendations, not requirements imposed by those frameworks.
 
 ## The canonical documents
 
@@ -100,6 +100,8 @@ Do not label every cleanup as urgent. A readability concern, a measured bottlene
 
 Choose one canonical backlog: usually GitHub Issues. `NOW.md` links to the current work. `RISKS.md` explains system-level exposure and links to implementation issues, rather than duplicating every issue's checklist and status. If a project has no issue tracker, a compact backlog section in `NOW.md` is sufficient initially.
 
+Keep a public risk summary useful without publishing exploit steps, affected customer records, or sensitive incident evidence. Put restricted details in an access-controlled record outside the public repository and use a safe reference and access route. A file named `PRIVATE.md` inside a public repository is still public. Apply the same boundary to the [operations inventory](#operations-includes-both-administrators-and-technical-operators).
+
 ## Operations includes both administrators and technical operators
 
 Your teammate may manage the product without modifying code. `OPERATIONS.md` must make that work explicit.
@@ -117,39 +119,41 @@ Include only the activities the application actually supports. Mark missing admi
 
 A useful procedure states: when to use it; required role; target environment; prerequisites; steps; expected outcome; verification; stop/escalation conditions; last exercised date and evidence. A guide saying “check the database” is not enough for independent operation.
 
-Document what a person can decide themselves, what requires an engineer, and who owns an incident. Store credential locations and access-request instructions, never credential values. In a public repository, keep internal account/billing/incident details in an access-controlled companion document with an explicit owner and link.
+Document what a person can decide themselves, what requires an engineer, and who owns an incident. Store credential locations and access-request instructions, never credential values, including in private repository documents. Inspect configuration names, scope, and exposure without retrieving secret values. In a public repository, keep internal account/billing/incident details in an access-controlled companion document outside that repository, with an explicit owner and a safe pointer or access route.
 
 ## Details your hosting and database stack especially needs
 
+The [provider reference](skills/vibe-code-docs-stack/references/providers.md) holds dated facts and primary-source links for Supabase, Neon, and Vercel. Read only the matching sections. For another stack, answer the same questions below using its current documentation and the project's actual settings. Documentation does not establish that infrastructure has been configured or authorize changing it.
+
 ### Environment map
 
-For local, preview, staging if used, and production, map the application URL and Vercel project to the actual database project/branch, auth configuration, storage, external integrations, and configuration source. An isolated preview frontend does not by itself establish an isolated backend.
+For local, preview, staging if used, and production, map the application URL and hosting project to the actual database project/branch, auth configuration, storage, external integrations, and configuration source. Record whether non-production data is copied from production, who can reach each preview, and how stale environments are removed. An isolated preview frontend does not by itself establish an isolated backend or sanitized data.
 
-Vercel variables have development, preview, and production scope; branch-specific preview overrides can matter. Record variable names, purposes, client/server exposure, and storage location, using safe placeholders in `.env.example`. Verify the mapping in the deployed environment. [Vercel environment variables](https://vercel.com/docs/environment-variables)
+Record variable names, purposes, client/server exposure, secure source, and environment/branch overrides, using safe placeholders in `.env.example`. Establish the deployed mapping from redacted deployment or integration evidence; project settings alone may omit injected variables. See [Vercel configuration](skills/vibe-code-docs-stack/references/providers.md#vercel) and [Neon integration behavior](skills/vibe-code-docs-stack/references/providers.md#neon).
 
 ### Supabase
 
-Record which services you actually use: database, Auth, Storage, Realtime, functions, scheduled jobs. Explain row ownership, tenant boundaries, and where access policies are maintained and tested. Supabase's RLS documentation is the provider reference for database row access. [Supabase RLS](https://supabase.com/docs/guides/database/postgres/row-level-security)
+Record services actually used and their access boundaries. Establish the exposed tables/views/functions, grants and RLS state, policy tests, and privileged server paths. Record relevant advisor findings or lack of inspection, and the evidence for preview isolation. The [Supabase reference](skills/vibe-code-docs-stack/references/providers.md#supabase) explains key types, branching, connection modes, and backup exclusions.
 
 Choose a migration workflow and reconcile dashboard changes with version-controlled migrations. Supabase distinguishes the migration files in Git from the history of migrations applied to a database; both matter when diagnosing drift. Document the actual state instead of claiming migrations are authoritative merely because a folder exists. [Supabase migrations](https://supabase.com/docs/guides/deployment/database-migrations)
 
-Record database backup coverage separately from file recovery: Supabase database backups exclude the actual objects stored through the Storage API. Capture the project's verified retention, recovery procedure, and last isolated restore exercise. [Supabase backups](https://supabase.com/docs/guides/platform/backups)
+Capture verified database and file recovery coverage, retention, configuration/integration recovery, and the last isolated exercise. A database copy is only one part of recovering the application.
 
 ### Neon
 
-Record the production branch, each non-production branch's purpose and parent, data-copy policy, connection configuration, cleanup ownership, and actual restore window. Ordinary Neon branching can expose a parent's data in the child; write isolation does not mean the copy contains no sensitive data. Neon also documents a schema-only option; check your chosen configuration. [Neon branching primer](https://neon.com/docs/get-started-with-neon/workflow-primer)
-
-Neon's practical guide describes branches evolving independently and recovery from history within a restore window. Define how schema changes reach production through your migration workflow; do not assume merging a Git branch merges database contents. [Neon practical guide](https://neon.com/blog/practical-guide-to-database-branching)
+Record the production branch, each non-production branch's purpose and parent, data-copy policy, application/tool connection modes, cleanup ownership, and actual history window. Define how schema changes reach production. The [Neon reference](skills/vibe-code-docs-stack/references/providers.md#neon) distinguishes ordinary data copies, schema-only branches, past-data branches, and restoration that replaces a target's timeline.
 
 ### Deployment and recovery
 
-Keep application rollback and database recovery as separate procedures. Vercel rollback points production back to a previous deployment and has configuration/environment considerations. It does not establish that an external database is compatible with that old code. Your release notes must therefore state the schema compatibility and recovery plan when a migration changes it. [Vercel rollback](https://vercel.com/docs/instant-rollback)
+Record where migrations run: build step, CI, manual procedure, or provider integration. Name the target and connection used in each environment, ordering relative to deployment, and safeguards against preview builds changing production. Keep application rollback and database recovery separate. Release notes should explain schema compatibility with earlier code; the rollback runbook should cover configuration, scheduled jobs, and resuming normal promotion. See [Vercel deployment and rollback behavior](skills/vibe-code-docs-stack/references/providers.md#vercel).
+
+An isolated recovery exercise identifies a separate disposable project/branch and the exact method that leaves production untouched. Plan access to copied data, test-only integrations, verification, and cleanup. Provider features can support either replacing an existing target or creating a separate copy; the word “restore” alone does not identify which. Use the matching [provider procedure](skills/vibe-code-docs-stack/references/providers.md) within the exercise's actual authorization.
 
 Record the acceptable data-loss interval and recovery-time target in plain language, followed by what is actually demonstrated. For example: “Desired recovery within two hours; not yet tested.” Do not convert a provider's backup feature into an unverified claim that the whole application can be restored.
 
 ### Dependency and ownership inventory
 
-Include GitHub organization/repository, Vercel team/project, database project, domain registrar/DNS, email provider, payments if used, storage, analytics, and monitoring. For each: purpose, owner, access route, billing owner, cost checked on a date, renewal/maintenance obligations, and failure consequence. Document configurations that are only in dashboards and cannot be recreated from Git.
+Include GitHub organization/repository, hosting team/project, database project, domain registrar/DNS, email provider, payments if used, storage, analytics, and monitoring. For each: purpose, owner, access route, billing owner, plan/add-ons, usage drivers, limit behavior, cost evidence, and renewal/maintenance obligations. Identify how an owner learns about failure, who receives alerts, and how long diagnostic logs survive. Document configurations that are only in dashboards and cannot be recreated from Git. Use the [plan and pause questions](skills/vibe-code-docs-stack/references/providers.md#plans-evidence-and-long-pauses) to expose gaps rather than assuming a managed service includes backup, alerting, or a total spending ceiling.
 
 ## Transfer across agents and tools
 
@@ -209,23 +213,25 @@ Make checkpoints at the end of meaningful work units rather than relying only on
 
 ## A small interface for your returning self
 
-Use a consistent README reading order across projects and keep `NOW.md` roughly a screen or two. My suggested target is about 300–500 words, with links for detail.
+Use a consistent README reading order across projects and keep `NOW.md` roughly a screen or two. About 300–500 words is an upper guide, not a minimum; link to detail instead of padding the checkpoint.
 
 Lead with: what this is; why it matters; what's working; what's broken or unknown; the next concrete action. Distinguish implemented, tested, and deployed. Avoid unexplained traffic-light status and percentage-complete estimates.
 
 Keep one private portfolio index across projects with: project, active/paused/maintained/retired, purpose, README/NOW links, owner, and next review date. Add cost and operational obligations only where they help you remember a live service. Link to project state instead of manually duplicating its full status.
 
-For a paused project, record why it was paused, what still runs and costs money, who receives alerts, and what would justify returning. For a retired project, record export/recovery arrangements and remaining ownership or domain obligations. This is a lifecycle document, not a request to delete infrastructure automatically.
+For a paused project, record why it was paused, what still runs and costs money, who receives alerts, and what would justify returning. Also record usable database/file recovery sources, provider idle and resume behavior, runtime and credential expiry, and expected resume checks. Set the next review before the earliest relevant deadline; see [provider pause guidance](skills/vibe-code-docs-stack/references/providers.md#plans-evidence-and-long-pauses). For a retired project, record data retention/deletion and export arrangements, remaining ownership or domain obligations, and planned credential/integration revocation. These are lifecycle decisions to document, not authorization to change or delete infrastructure.
 
 ## Demonstrate the handover
 
 A handover is complete when the recipient can perform the work with the documents, suitable access, and reasonable support. The checklist is a dated evidence record linking the canonical docs; it is not another manual.
 
-**Engineer exercise:** explain the product outcome and main tradeoffs; run from a clean checkout; trace a core flow from UI to storage; identify the priority risks; make a small change; run relevant checks; deploy and verify a preview; explain migration and recovery constraints. Before taking responsibility for production recovery, exercise the recovery procedure in an isolated environment.
+**Engineer exercise:** explain the product outcome and main tradeoffs; run from a clean checkout; trace a core flow from UI to storage; identify the priority risks; make a small change; run relevant checks; explain migration and recovery constraints. Preview deployment belongs only within the recipient's role and authorization. Before taking responsibility for production recovery, exercise the recovery procedure using the separate target described under [deployment and recovery](#deployment-and-recovery).
 
 **Operator exercise:** get the right access; complete the main routine admin tasks; distinguish normal behavior from failure; locate logs/alerts when appropriate; handle one representative problem; demonstrate escalation; confirm billing and maintenance ownership. Technical recovery belongs to the role authorized and trained to do it.
 
 **User exercise:** reach the first useful outcome from the guide and recover from one common input error. This should not require reading architectural internals.
+
+For ownership transfer, use the [handover record](starter-kit/templates/HANDOVER.md) to distinguish incoming access from account, billing, domain, and integration ownership. Record recovery-access custody without codes, outgoing access removal or an explicit retained-access agreement, and required credential rotation with its owner and status. Documenting these steps does not execute them.
 
 Record gaps, owner, and next action. Label readiness by responsibility: “ready for daily administration; production recovery remains with the founder” is more useful than “handover complete” with unresolved access and recovery gaps.
 

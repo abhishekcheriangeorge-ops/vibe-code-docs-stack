@@ -10,7 +10,7 @@ In a Codex environment with Skill Installer available, use:
 
 ```text
 $skill-installer install the skill from
-https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack/tree/main/skills/vibe-code-docs-stack
+https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack/tree/v0.2.0/skills/vibe-code-docs-stack
 ```
 
 Then select the installed skill and give it a task:
@@ -24,10 +24,10 @@ Codex CLI and IDE extension support `$` mentions or `/skills`; desktop interface
 
 ## Manual installation across harnesses
 
-First clone or download this public repository. Use a location where you keep reusable tooling:
+First clone or download the release into a tools directory outside the target application repository. From that tools directory:
 
 ```sh
-git clone https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack.git
+git clone --depth 1 --branch v0.2.0 https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack.git
 cd vibe-code-docs-stack
 ```
 
@@ -85,7 +85,9 @@ Local installation also does not transfer credentials, tool connections, or unco
 
 ## Update an installation
 
-Pull the upstream toolkit changes, inspect the skill diff, and replace the installed directory after preserving any local customizations. If you copied the skill into application repositories, update those copies deliberately and commit the update. Keep project-specific knowledge in project documents so upgrading the skill does not erase it.
+Check [CHANGELOG.md](CHANGELOG.md) for a new tagged release, obtain that release, inspect its skill diff, and replace the installed directory after preserving local customizations. A checkout pinned to a tag does not advance with `git pull`; fetch and select the new tag or download a fresh release. The examples above use a stable tag; `main` is the development branch and can contain changes since the last release.
+
+For copied skills, record the upstream URL and tag or commit in the target's existing tooling/dependency notes. Update deliberate project copies and commit them with the application. Keep project-specific knowledge in project documents, so upgrading the skill does not erase it. For adapted templates, apply useful upstream changes individually rather than replacing completed manuals.
 
 ## Maintainer packaging
 
@@ -97,5 +99,7 @@ python3 scripts/build_skill_assets.py --check
 ```
 
 Commit source changes and their generated copies. Check mode verifies both templates and the bundled license. Edit workflow behavior in SKILL.md and its focused references. The maintainer helper uses Python's standard library; installed agents do not need to execute it.
+
+For a template deletion or rename, review and remove the corresponding obsolete generated file, then rebuild and check. The helper reports unexpected files and does not delete them automatically. The complete validation and release procedure is in [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Research checked: 7 September 2026. Package and behavioral validation are recorded in [SKILL-VALIDATION.md](SKILL-VALIDATION.md); verify discovery in the particular harness/version you use.

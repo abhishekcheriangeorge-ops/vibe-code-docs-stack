@@ -1,6 +1,6 @@
 # Handover by responsibility
 
-Establish what the recipient will own: engineering, product administration, technical operations, or a combination. If unknown, prepare the reading paths and list the scope question without granting ownership or access.
+Establish what the recipient will own: engineering, product administration, technical operations, or a combination; include user onboarding when requested. If unknown, prepare the reading paths and list the scope question without granting ownership or access.
 
 Use the document map and relevant canonical manuals. Create a dated handover record from the bundled template, linking these documents. Avoid another independent copy of the system description. Record outgoing/incoming owner, reviewed release or code revision, environment, access status, and remaining responsibilities.
 
@@ -11,6 +11,12 @@ For an engineer: explain product purpose and major tradeoffs, run from a clean c
 For a product administrator: complete real routine tasks such as user/role management, approvals, corrections, or imports; identify expected outcomes; handle a representative error; and demonstrate escalation. Do not imply admin capabilities exist when they are manual workarounds or missing features.
 
 For a technical operator: identify the live environment and release, locate monitoring/logs, diagnose a representative failure, explain release and migration compatibility, and exercise recovery in an isolated environment before taking recovery responsibility. Verify account, billing, renewal, and maintenance ownership.
+
+For recovery, name the exact backup/source and separate destination project or branch, the restore method, and how production writes and external emails/payments/jobs are prevented. Verify the actual plan's backup availability and retained window; a restore control can overwrite its selected target. Consult [provider checks](providers.md) for Vercel, Supabase, or Neon. An unverified isolation mechanism is a pending exercise, not proof of recovery readiness.
+
+For ownership transfer, record incoming account/billing ownership, backup administrator or emergency-access custody, shared credential rotation status, and outgoing access to revoke or deliberately retain with an owner and review/end date. Store secure access references only. Preparation records the work; authorization to document a handover does not authorize changing access or rotating credentials.
+
+For a user: reach a first successful outcome, complete a routine task, and find help after a common error using the user guide.
 
 If the user asked to prepare the handover, document the exercises as pending. Do not execute deployments, grant access, or simulate a recipient's acceptance to make the record look complete. Run authorized local exercises when requested; describe exactly what they establish.
 

@@ -3,7 +3,8 @@ name: vibe-code-docs-stack
 description: Create, retrofit, or maintain repository documentation that preserves product intent, design decisions, known risks, current work state, and engineer/operator handovers. Use for documentation-stack setup, documentation updates after code changes, project checkpoints, and handover preparation. For ordinary coding tasks, use only when documentation work is requested or required by the project's existing instructions.
 license: MIT
 metadata:
-  version: "0.1.1"
+  version: "0.2.0"
+  source: "https://github.com/abhishekcheriangeorge-ops/vibe-code-docs-stack"
 ---
 
 # Vibe Code Docs Stack
@@ -36,16 +37,16 @@ Inspect only evidence relevant to the requested scope. If deployment, database, 
 
 Consult the [document map](references/document-map.md) to select canonical destinations and bundled templates. Read only the assets needed for this task. All references resolve within this skill package. Template filenames are defaults, not a migration requirement.
 
-Fill adopted sections with project-specific facts or actionable unknowns. Use short evidence-backed descriptions and link to real code, tests, issues, or deployment records. Avoid copying an entire empty scaffold. Preserve important design decisions and their consequences; record why a shortcut was accepted and what would trigger reconsideration.
+Fill adopted sections with project-specific facts or actionable unknowns. Use short evidence-backed descriptions and link to real code, tests, issues, or deployment records. Remove unused sections, unresolved template placeholders, and instructions intended only for the template adopter. Preserve important design decisions and their consequences; record why a shortcut was accepted and what would trigger reconsideration.
 
 Keep repetitive schema/API details derived from the actual source where generation exists. Explain business meaning, access, lifecycle, and limitations in prose. Do not invent a generator, supported command, user workflow, capacity claim, or recovery guarantee.
 
-Keep credentials, sensitive logs, customer data, and private conversation extracts out of public docs. Record configuration names and access routes at the appropriate visibility. Preserve other contributors' work and use one canonical backlog with links from the docs.
+Keep credentials and sensitive raw data out of documentation, regardless of repository visibility; do not reproduce secret values in tool output. Record configuration names and secure access routes. For public or unknown audiences, follow the [document map's disclosure boundary](references/document-map.md#disclosure-boundary). Preserve other contributors' work and use one canonical backlog with links from the docs.
 
 ## Leave a maintainable result
 
 For bootstrap/retrofit, adapt a concise maintenance contract in the target's existing agent instructions, pointing to its actual document names. For subsequent work, honor that contract and update only affected information. Do not overwrite an existing AGENTS.md or CLAUDE.md wholesale, or create duplicate contracts in multiple harness files. Add a Claude import adapter only when Claude Code is relevant and compatible with existing instructions.
 
-Check changed links and implementation references, plus relevant commands when safely runnable within scope. Record checks as passed, failed, or not run with their limits. A date changes to “last verified” only after an actual check.
+Check changed links and implementation references. Before executing a documented command, inspect its scripts/hooks and target environment without printing secret values; builds and tests can write to hosted services. Run checks only when their side effects are understood and authorized. If the target is unclear, record the check as not run and what must be established. Record pass/fail/not-run with limits; “last verified” requires an actual check.
 
 Finish with a short orientation: where to start, what changed, what was verified, the consequential gaps or owner questions, and the first concrete next action. Report handover readiness by responsibility and evidence, rather than a blanket claim that the project is production-ready.

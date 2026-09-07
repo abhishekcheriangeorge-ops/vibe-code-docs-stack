@@ -1,6 +1,6 @@
 # ADR-[number]: [Decision]
 
-Date: [date]. Status: [proposed / accepted / deprecated / superseded]. Decision owner: [person/role].
+Date: [date]. Status: [proposed / accepted / rejected / deprecated / superseded]. Decision owner: [person/role].
 
 ## Context
 
@@ -8,13 +8,15 @@ Date: [date]. Status: [proposed / accepted / deprecated / superseded]. Decision 
 
 ## Decision and rationale
 
-[What was chosen and why. Label inferred historical reasoning as unconfirmed.]
+[What was chosen and why. Label inferred historical reasoning as unconfirmed. A tool/framework default is a valid origin; do not invent a deliberate evaluation.]
 
 ## Alternatives actually considered
 
 | Option | Why chosen or rejected |
 |---|---|
 | [Option] | [specific tradeoff] |
+
+[If no alternatives were evaluated or the history is unknown, say so and remove the empty table.]
 
 ## Consequences
 

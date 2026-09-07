@@ -18,11 +18,11 @@ Owner: [role/person]. Implementation inspected: [code revision and date].
 
 ## Why this design
 
-[Constraints and concise rationale. Link major choices to decisions/. Mark historical rationale inferred from code as unconfirmed.]
+[Constraints and concise rationale. Link major choices to docs/decisions/ or the existing equivalent. Mark historical rationale inferred from code as unconfirmed.]
 
-| Decision | Current status | Record | Revisit trigger |
-|---|---|---|---|
-| [Choice] | [accepted/proposed/superseded] | [ADR link] | [condition] |
+| Decision | Record with canonical status and revisit trigger |
+|---|---|
+| [Choice] | [ADR link] |
 
 ## Boundaries and cross-cutting behavior
 

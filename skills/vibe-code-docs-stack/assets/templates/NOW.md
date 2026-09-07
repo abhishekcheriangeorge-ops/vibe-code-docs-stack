@@ -1,6 +1,6 @@
 # Current state
 
-Updated: [date/time + timezone]. Evidence checked: [date, environment, tested code SHA or CI link].
+Updated: [date/time + timezone]. Evidence checked: [scope, date, environment, tested code SHA or CI link; retain older dates for claims not rechecked].
 
 ## Return in two minutes
 
@@ -22,13 +22,13 @@ Updated: [date/time + timezone]. Evidence checked: [date, environment, tested co
 - Active issue/PR: [link or none].
 - Local-only changes/artifacts: [paths and transfer needs or none].
 - Committed/pushed state: [verified facts or unknown].
-- Current work notes: [only details needed to resume; link if lengthy].
+- Current work notes: [only details needed to resume; link branch-specific detail to its issue/PR so concurrent tasks do not overwrite each other].
 - Failed approach worth remembering: [what was tried, evidence, implication; omit if none].
 
 ## Attention and links
 
 - Main risk: [link to specific RISKS entry].
 - Decision needed: [specific question, owner, consequence; or none].
-- If paused: [why, what still runs, maintenance owner, return trigger].
+- If paused: [why, maintenance owner, return trigger; link to OPERATIONS for running costs, alerts, expiries, and recovery evidence].
 
-Keep roughly 300–500 words. This is a checkpoint, not a chronological session transcript.
+<!-- Template guidance: Keep this to a screen or two, usually no more than 500 words; shorter is fine. Remove this comment after adaptation. -->
