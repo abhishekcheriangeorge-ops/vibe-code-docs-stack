@@ -10,11 +10,23 @@ Built for solo builders, frequent project switchers, and teams taking prototypes
 
 | Your situation | What to use |
 |---|---|
+| I want to install this as an agent skill | [Skill installation and usage](INSTALL-SKILL.md) |
 | I already have a project | [Retrofit an existing project](prompts/RETROFIT-PROJECT.md) |
 | I'm starting a new project | [Set up the documentation stack](START-PROJECT.md) |
 | I want the reasoning and full workflow | [Research and playbook](documentation-playbook.md) |
 | I want the actual document templates | [Starter kit](starter-kit/ADOPTING-THIS-KIT.md) |
 | I'm transferring responsibility | [Handover evidence template](starter-kit/templates/HANDOVER.md) |
+
+## Use it as an agent skill
+
+Install the self-contained [Vibe Code Docs Stack skill](skills/vibe-code-docs-stack/SKILL.md) once in your harness or commit it into a target project's skill directory. Then select it and ask it to bootstrap, retrofit, maintain, checkpoint, or prepare a handover.
+
+```text
+Use vibe-code-docs-stack to retrofit this project's documentation.
+Preserve existing useful docs and identify missing product context.
+```
+
+The skill bundles its references and templates, with optional Codex UI metadata and no runtime dependency. [Installation instructions](INSTALL-SKILL.md) cover Codex, Claude Code, and Cursor. The prompts below remain available for tools without skill support.
 
 ## Use it on an existing project
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Vibe Code Docs Stack"
+  short_description: "Preserve project context, decisions, and handovers"
+  default_prompt: "Use $vibe-code-docs-stack to retrofit this project's documentation from its code, existing docs, and planning context."
